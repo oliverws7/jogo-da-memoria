@@ -1,0 +1,57 @@
+/* Estilo geral da janela */
+QMainWindow {
+    background-color: #f0f2f5;
+}
+
+/* Estilo para o botão novo jogo */
+QPushButton.new-game-button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px;
+    margin: 5px;
+}
+
+QPushButton.new-game-button:hover {
+    background-color: #2ecc71;
+}
+
+QPushButton.new-game-button:pressed {
+    background-color: #219a52;
+}
+
+/* Estilo para os cartões */
+QPushButton.card {
+    background-color: #3498db;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2px;
+    padding: 2px;
+}
+
+QPushButton.card:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+/* Estilo para cartões combinados */
+QPushButton.matched {
+    background-color: #2ecc71;
+    border-radius: 8px;
+}
+
+/* Estilo para o label de informações */
+QLabel {
+    color: #2C3E50;
+    font-weight: bold;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    margin: 5px;
+    min-height: 30px;
+}
