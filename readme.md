@@ -1,42 +1,65 @@
-🎮 Memory Game em PySide6
-Um jogo da memória interativo e responsivo desenvolvido com PySide6 (Qt para Python). Encontre todos os pares de emojis com o menor número de tentativas possível!
+# 🎮 Memory Game (PySide6)
 
-✨ Funcionalidades
-Interface gráfica moderna com design responsivo
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python)
+![PySide6](https://img.shields.io/badge/PySide6-Qt-green?style=for-the-badge&logo=qt)
+![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Concluído-success?style=for-the-badge)
 
-Grade 4x4 com 8 pares de emojis variados
+> Um jogo da memória moderno, responsivo e interativo desenvolvido em Python com a biblioteca PySide6 (Qt).
 
-Sistema de pontuação que conta tentativas
+---
 
-Botão "New Game" para reiniciar a qualquer momento
+## ✨ Funcionalidades
 
-Cartas com efeitos visuais para indicar:
+### 🕹️ Gameplay
+* **Grade 4x4:** 8 pares de emojis desafiadores.
+* **Contador de Tentativas:** Acompanhe seu desempenho em tempo real.
+* **Feedback Visual:**
+    * 🟩 Cartas verdes para pares encontrados.
+    * 🟦 Efeitos de *hover* e clique suaves.
+* **Reinício Rápido:** Botão "New Game" para começar uma nova partida instantaneamente.
 
-Cartas viradas
+### ⚙️ Destaques Técnicos
+* **Design Responsivo:** O grid e as fontes se ajustam automaticamente ao redimensionar a janela (evento `resizeEvent` customizado).
+* **Estilização Externa:** Uso de arquivo `.qss` (Qt Style Sheets) para separação entre lógica e design.
+* **Lógica Assíncrona:** Uso de `QTimer` para gerenciar a visualização das cartas sem travar a interface.
 
-Pares encontrados (verde)
+---
 
-Cartas não correspondentes (temporariamente visíveis)
+## 📁 Estrutura do Projeto
 
-Redimensionamento dinâmico dos botões conforme o tamanho da janela
+Para que o estilo funcione corretamente, o projeto deve seguir esta estrutura:
 
-Estilização personalizável via arquivo QSS
+```text
+memory-game/
+├── memory_game.py          # Código principal (Logica e GUI)
+├── LICENSE                 # Arquivo de licença MIT
+├── README.md               # Documentação
+└── game/                   # ⚠️ Importante: Pasta para recursos
+    └── styles.qss          # Arquivo de estilos CSS/QSS
 
-🚀 Instalação
-Pré-requisitos
-Python 3.8 ou superior
+```
 
-pip (gerenciador de pacotes do Python)
+---
 
-Passo a passo
-Clone o repositório (ou baixe os arquivos):
+## 🚀 Instalação e Execução
 
-bash
-git clone <URL_DO_REPOSITORIO>
+### Pré-requisitos
+
+* Python 3.8 ou superior.
+
+### Passo a Passo
+
+1. **Clone o repositório:**
+```
+git clone [https://github.com/oliverws7/memory-game-pyside6.git](https://github.com/oliverws7/memory-game-pyside6.git)
 cd memory-game-pyside6
-Crie e ative um ambiente virtual (recomendado):
 
-bash
+```
+
+
+2. **Crie um ambiente virtual (Recomendado):**
+```
 # Windows
 python -m venv venv
 venv\Scripts\activate
@@ -44,140 +67,94 @@ venv\Scripts\activate
 # Linux/Mac
 python3 -m venv venv
 source venv/bin/activate
-Instale as dependências:
 
-bash
+```
+
+
+3. **Instale as dependências:**
+```
 pip install PySide6
-Execute o jogo:
 
-bash
+```
+
+
+4. **Configure o Estilo:**
+*Certifique-se de que o arquivo `styles.qss` esteja dentro de uma pasta chamada `game` no mesmo diretório do script, caso contrário o jogo carregará o estilo padrão.*
+5. **Execute o jogo:**
+```
 python memory_game.py
-🎯 Como Jogar
-Início: O jogo começa com todas as cartas viradas para baixo
 
-Clique em uma carta: Revele o emoji escondido
+```
 
-Encontre pares: Clique em outra carta para tentar formar um par
 
-Resultados:
 
-Par correto: Cartas ficam verdes e permanecem viradas
+---
 
-Par incorreto: Cartas são viradas novamente após 1 segundo
+## 🎨 Personalização
 
-Vitória: Encontre todos os 8 pares para vencer!
+O jogo foi construído pensando na flexibilidade. Veja como alterar alguns aspectos:
 
-Novo jogo: Use o botão "🔄 New Game" para reiniciar
+### Mudar os Emojis
 
-📁 Estrutura do Projeto
-text
-memory-game-pyside6/
-├── memory_game.py          # Código principal do jogo
-├── game/
-│   └── styles.qss         # Arquivo de estilos (opcional)
-├── README.md              # Este arquivo
-└── requirements.txt       # Dependências do projeto
-🎨 Personalização
-Modificar Emojis
-Edite a lista self.emojis na linha 56 do memory_game.py:
+No arquivo `memory_game.py`, localize a lista `self.emojis`:
 
-python
-self.emojis = ['🎮', '🎲', '🎯', '🎨', '🎭', '🎪', '🎟️', '🎬']
-Alterar Estilos
-Estilo embutido: Modifique o dicionário de estilos nas linhas 121-130
+```python
+# Linha ~56
+self.emojis = ['🚀', '🌙', '⭐', '👨‍🚀', '👽', '☄️', '📡', '🔭'] 
 
-Arquivo externo: Crie um arquivo game/styles.qss com suas regras CSS
+```
 
-Exemplo de estilo personalizado:
+### Alterar Cores e Bordas
 
-css
+Edite o arquivo `game/styles.qss`. O código aceita sintaxe CSS padrão:
+
+```css
+/* Exemplo: Cartas redondas e roxas */
 QPushButton.card {
-    background-color: #9b59b6;
-    border-radius: 20px;
-    font-size: 50px;
+    background-color: #8e44ad;
+    border-radius: 50%; /* Deixa a carta redonda */
 }
 
-QPushButton.matched {
-    background-color: #e74c3c;
-}
-Mudar Tamanho da Grade
-Para alterar para 6x6 (por exemplo):
+```
 
-python
-# Altere estas linhas:
-for i in range(6):  # Mudar de 4 para 6
-    for j in range(6):
-        # ...
-        index = row * 6 + col  # Mudar de 4 para 6
+---
 
-# Atualize também a verificação de vitória:
-if self.matches == 18:  # 6x6 = 36 cartas = 18 pares
-🛠️ Solução de Problemas
-Erro: "ModuleNotFoundError: No module named 'PySide6'"
-bash
-pip install PySide6
-Erro: Janela fecha imediatamente
-Execute pelo terminal para ver mensagens de erro:
+## 🛠️ Solução de Problemas Comuns
 
-bash
-python memory_game.py
-Problemas com o arquivo de estilos
-O jogo funciona mesmo sem o arquivo styles.qss. Se quiser criá-lo:
+| Problema | Solução |
+| --- | --- |
+| `ModuleNotFoundError: No module named 'PySide6'` | Execute `pip install PySide6` no seu terminal/ambiente virtual. |
+| O jogo abre sem cores/estilo | Verifique se a pasta `game` existe e se `styles.qss` está dentro dela. |
+| A janela fecha instantaneamente | Execute via terminal (`python memory_game.py`) para ler o log de erro. |
 
-bash
-mkdir game
-echo "QPushButton.card { background-color: #3498db; border-radius: 10px; }" > game/styles.qss
-Interface não redimensiona corretamente
-A função adjust_button_sizes() calcula automaticamente o tamanho ideal. Se houver problemas:
+---
 
-Maximize a janela
+## 🤝 Contribuindo
 
-Use o botão "New Game"
+Contribuições são muito bem-vindas!
 
-Ou reinicie o jogo
+1. Faça um Fork do projeto.
+2. Crie uma Branch para sua Feature (`git checkout -b feature/IncrívelRecurso`).
+3. Faça o Commit (`git commit -m 'Adiciona IncrívelRecurso'`).
+4. Faça o Push (`git push origin feature/IncrívelRecurso`).
+5. Abra um Pull Request.
 
-📋 Requisitos do Sistema
-Sistema Operacional: Windows 10+, macOS 10.14+, ou Linux com GUI
+---
 
-Python: Versão 3.8 ou superior
+## 📄 Licença
 
-Memória RAM: Mínimo 512MB (recomendado 1GB)
+Este projeto está sob a licença MIT. Consulte o arquivo [LICENSE](https://www.google.com/search?q=LICENSE) para mais detalhes.
 
-Espaço em disco: Aproximadamente 50MB
+Copyright (c) 2026 **Mateus Nunes**
 
-🤝 Contribuindo
-Contribuições são bem-vindas! Siga estes passos:
+---
 
-Faça um Fork do projeto
+<div align="center">
 
-Crie uma branch para sua feature (git checkout -b feature/AmazingFeature)
-
-Commit suas mudanças (git commit -m 'Add some AmazingFeature')
-
-Push para a branch (git push origin feature/AmazingFeature)
-
-Abra um Pull Request
-
-📄 Licença
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
-
-🙏 Agradecimentos
-PySide6 - Framework Qt para Python
-
-Qt Company - Pelo incrível framework Qt
-
-Emojipedia - Por fornecer os emojis Unicode
-
-📞 Suporte
-Encontrou um bug ou tem uma sugestão? Por favor:
-
-Abra uma issue
-
-Descreva o problema ou sugestão
-
-Inclua detalhes como sistema operacional e versão do Python
-
-<div align="center"> Feito com ❤️ e Python
-Divirta-se jogando! 🎯
+**Feito com 🐍 Python e ❤️**
 
 </div>
+
+```
+
+```
